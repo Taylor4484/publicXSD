@@ -252,11 +252,20 @@
 	</xsd:complexType>
 
 	<!-- coordinatesType (allows more precision [or estimation] of a Crisis' area) -->
-	<xsd:complexType name="coordinatesType" type="xsd:string">
-		<xsd:attribute name="Lat" type="xsd:integer" use="required"/>
-		<xsd:attribute name="Lon" type="xsd:integer" use="required"/>
-		<xsd:attribute name="Radius" type="xsd:integer" use="optional"/>
-	</xsd:complexType>
+	<!-- coordinatesType (allows more precision [or estimation] of a Crisis' area) -->
+  <!-- use miles for radius -->
+  <xsd:complexType name="coordinatesType">
+    <xsd:simpleContent>
+      <xsd:extension base="geoType">
+        <xsd:attribute name="lat" type="xsd:integer" use="required"/>
+        <xsd:attribute name="lon" type="xsd:integer" use="required"/>
+        <xsd:attribute name="radius" type="xsd:integer" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="geoType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
 
 	<!-- Date Type-->
 	<!--
